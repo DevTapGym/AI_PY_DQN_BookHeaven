@@ -1,0 +1,43 @@
+# Bỏ qua các file không cần thiết khi build Docker image
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+ENV/
+.venv
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Data files (không cần thiết cho API)
+events.csv
+events_with_groups.csv
+events_with_states.csv
+*.csv
+
+# Scripts không cần cho API
+add_group_id.py
+add_state.py
+main.py
+
+# Output files
+outputs/
+*.png
+*.log
+
+# Git
+.git/
+.gitignore
+
+# Documentation
+README.md
+
+# Test files
+test_*.py
+*_test.py

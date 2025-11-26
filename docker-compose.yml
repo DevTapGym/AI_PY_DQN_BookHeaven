@@ -1,0 +1,22 @@
+version: '3.8'
+
+services:
+  dqn-api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: dqn-recommendation-api
+    ports:
+      - "8000:8000"
+    environment:
+      - PYTHONUNBUFFERED=1
+    volumes:
+      # Mount model file nếu muốn update model mà không rebuild image
+      - ./dqn_product_recommendation.pth:/app/dqn_product_recommendation.pth
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "python", "-c", "import requests; requests.get('http://localhost:8000/health')"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
